@@ -5,14 +5,14 @@ import utils.RandomValue;
 /**
  * Created by AMogilnikov on 29.01.2017.
  */
-public class MathUtilsTests {
+public class MathUtilsTest {
     @Test
     public void testRandomNumber() {
         int minRange = 0;
         int maxRange = 5;
-        int rundomNumber = RandomValue.getInt(minRange, maxRange);
-        Assert.assertTrue(minRange < rundomNumber);
-        Assert.assertTrue(maxRange > rundomNumber);
+        int randomNumber = RandomValue.getInt(minRange, maxRange);
+        Assert.assertTrue(minRange <= randomNumber);
+        Assert.assertTrue(maxRange > randomNumber);
     }
 
     @Test(expected = IllegalArgumentException.class)
