@@ -13,12 +13,9 @@ import java.io.File;
  */
 public class DataMapperTest {
     User realUser;
-//    User fakeUser;
     static UserDataMaper dataMaper;
     String realName = "admin";
     String realEmail = "vasia_puprkin@ua.fm";
-    String realPassword = "DfghUD52";
-    ClassLoader cl;
 
     @Test
     public void UserFoundByName() {
@@ -45,9 +42,6 @@ public class DataMapperTest {
 
     @Before
     public void setUP() {
-        realUser = new User(realName, realEmail, realPassword);
-//        File users=new File(getClass().getClassLoader().getResource("users.txt").getFile());
-//        dataMaper = new DefaultUserDataMaper(users.getAbsolutePath());
     }
 
     @BeforeClass
@@ -55,9 +49,6 @@ public class DataMapperTest {
         dataMaper = new DefaultUserDataMaper();
     }
 
-    protected void getRes(){
-        cl=getClass().getClassLoader();
-    }
     @After
     public void clear() {
         realUser = null;
