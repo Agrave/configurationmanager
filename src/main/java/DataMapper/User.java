@@ -1,4 +1,4 @@
-package Lesson17;
+package DataMapper;
 
 /**
  * Created by Rabot'aga on 12.01.2017.

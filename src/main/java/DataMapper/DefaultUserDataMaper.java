@@ -1,9 +1,6 @@
-package Lesson17;
+package DataMapper;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +11,16 @@ public class DefaultUserDataMaper implements UserDataMaper {
     private List<User> users;
 
     public DefaultUserDataMaper() {
-        readUsersFile();
+        File users=new File(getClass().getClassLoader().getResource("users.txt").getFile());
+        readUsersFile(users.getAbsolutePath());//"users.txt"
+    }
+    public DefaultUserDataMaper(String file) {
+        readUsersFile(file);//"users.txt"
     }
 
-    private void readUsersFile() {
+    private void readUsersFile(String file) {
         String line;
-        try (BufferedReader reader = new BufferedReader(new FileReader("src\\Lesson17\\users.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             users = new ArrayList<>();
             while ((line = reader.readLine()) != null) {
                 users.add(new User(line));
@@ -32,6 +33,7 @@ public class DefaultUserDataMaper implements UserDataMaper {
 
     }
 
+
     @Override
     public User getUserByName(String name) throws UserNotFoundExeption {
         for (User user : users) {
@@ -43,7 +45,7 @@ public class DefaultUserDataMaper implements UserDataMaper {
     @Override
     public User getUserByEmail(String email) throws UserNotFoundExeption {
         for (User user : users) {
-            if (user.getName().equalsIgnoreCase(email)) return user;
+            if (user.getEmail().equalsIgnoreCase(email)) return user;
         }
         throw new UserNotFoundExeption(email);
     }
