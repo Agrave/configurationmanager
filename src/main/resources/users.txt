@@ -1,0 +1,3 @@
+testuser;test_user@gmail.com;123456
+admin;vasia_puprkin@ua.fm;DfghUD52
+igor;igorPerviy@gmail.com;1qaz2wsx3edc
