@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 /**
- * Created by AMogilnikov on 14.02.2017.
+ *
  */
 public class WebDriverTest {
     private final static String email = "agrave18@gmail.com";
