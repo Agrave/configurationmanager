@@ -41,5 +41,12 @@ public class ConfigurationManagerTest {
         String actual=manager.getTestEnvironment();
         Assert.assertEquals(expected,actual);
     }
+    @Test
+    public void curentEnviromentTest(){
+        String expected="BUILDSERVER";
+        String actual=manager.getTestEnvironment();
+        Assert.assertEquals(expected,actual);
+    }
+
 
 }
