@@ -7,10 +7,12 @@ import TestBrowserManager.api.TestBrowserManager;
 import TestBrowserManager.factory.BildServerTestBrowser;
 import TestBrowserManager.factory.CloudTestBrowser;
 import TestBrowserManager.factory.LocalTestBrowser;
+import org.openqa.selenium.WebDriver;
 
 public class DefaultTestBrowserManager implements TestBrowserManager {
+
     @Override
-    public String getTestBrowser() {
+    public WebDriver getTestBrowser() {
 
         String env = ConfigurationManager.getInstance().getTestEnvironment().toUpperCase();
         Enviroment enviroment= Enviroment.valueOf(env);
@@ -34,7 +36,8 @@ public class DefaultTestBrowserManager implements TestBrowserManager {
     }
 
     @Override
-    public void destroyTestBrowser(String testBrowser) {
+    public void destroyTestBrowser(WebDriver testBrowser) {
+        if (testBrowser!=null) testBrowser.quit();
 
     }
 }
