@@ -1,9 +1,11 @@
 package TestBrowserManager.api;
 
+import org.openqa.selenium.WebDriver;
+
 /**
- * Created by Rabot'aga on 26.12.2016.
+ *
  */
 public interface TestBrowserManager {
-    String getTestBrowser();
-    void destroyTestBrowser(String testBrowser);
+    WebDriver getTestBrowser();
+    void destroyTestBrowser(WebDriver testBrowser);
 }
