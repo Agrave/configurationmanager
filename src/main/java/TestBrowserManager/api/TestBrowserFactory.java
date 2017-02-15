@@ -1,8 +1,10 @@
 package TestBrowserManager.api;
 
+import org.openqa.selenium.WebDriver;
+
 /**
- * Created by Rabot'aga on 29.12.2016.
+ *
  */
 public interface TestBrowserFactory {
-    String create();
+    WebDriver create();
 }
