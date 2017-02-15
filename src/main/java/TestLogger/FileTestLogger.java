@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Rabot'aga on 22.12.2016.
  */
 public class FileTestLogger implements TestLogger {
-    private String fileName = "report_" + date() + ".txt";
+    private String fileName = "target\\custom-logs\\"+"report_" + date() + ".txt";
     private int stepCounter;
     private List<String> log;
 
