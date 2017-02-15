@@ -3,27 +3,47 @@ package TestBrowserManager.factory;
 import ConfigurationManager.ConfigurationManager;
 import TestBrowserManager.api.BrowserType;
 import TestBrowserManager.api.TestBrowserFactory;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.URL;
 
 public class BildServerTestBrowser implements TestBrowserFactory {
     @Override
-    public String create() {
+    public WebDriver create() {
         String browserName = ConfigurationManager.getInstance().getTestBrowser().toUpperCase();
-        BrowserType browserType=BrowserType.valueOf(browserName);
+        BrowserType browserType = BrowserType.valueOf(browserName);
+        DesiredCapabilities capabilities = null;
         switch (browserType) {
             case CHROME:
-                return "BildServer Google Chrome";
+                capabilities = DesiredCapabilities.chrome();
+                break;
             case FIREFOX:
-                return "BildServer Firefox";
+                capabilities = DesiredCapabilities.firefox();
+                break;
             case EDGE:
-                return "BildServer Edge";
+                capabilities = DesiredCapabilities.edge();
+                break;
             case IE:
-                return "BildServer IE";
+                capabilities = DesiredCapabilities.internetExplorer();
+                break;
             case OPERA:
-                return "BildServer Opera";
+                capabilities = DesiredCapabilities.operaBlink();
+                break;
             case SAFARI:
-                return "BildServer Safari";
+                capabilities = DesiredCapabilities.safari();
+                break;
             default:
                 return null;
         }
+        URL seleniumServerURL;
+        try {
+            seleniumServerURL = new URL("http://127.0.0.1:4444/wd/hub");
+        } catch (Exception e) {
+            seleniumServerURL = null;
+        }
+        return new RemoteWebDriver(seleniumServerURL, capabilities);
+
     }
 }
