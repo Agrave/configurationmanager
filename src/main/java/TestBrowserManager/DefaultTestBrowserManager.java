@@ -21,7 +21,7 @@ public class DefaultTestBrowserManager implements TestBrowserManager {
             case CLOUD:
                 testBrowserFactory = new CloudTestBrowser();
                 break;
-            case BIDLSERVER:
+            case BUILDSERVER:
                 testBrowserFactory = new BildServerTestBrowser();
                 break;
             case LOCAL:
