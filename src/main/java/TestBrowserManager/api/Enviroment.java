@@ -5,6 +5,6 @@ package TestBrowserManager.api;
  */
 public enum Enviroment {
     LOCAL,
-    BIDLSERVER,
+    BUILDSERVER,
     CLOUD
 }
