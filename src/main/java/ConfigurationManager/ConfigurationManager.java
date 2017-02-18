@@ -12,7 +12,7 @@ public class ConfigurationManager {
 
     public static ConfigurationManager getInstance() {
         if (instance == null)
-            return new ConfigurationManager();
+            instance= new ConfigurationManager();
         return instance;
     }
 
