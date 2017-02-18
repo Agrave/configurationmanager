@@ -1,51 +1,42 @@
 import ConfigurationManager.ConfigurationManager;
 import org.junit.*;
+import utils.JVMEnvironment;
 
-/**
- * Created by AMogilnikov on 14.02.2017.
- */
 public class ConfigurationManagerTest {
     private ConfigurationManager manager;
     private String curTestBrowser;
     private String curTestEnviroment;
 
-    @Ignore
     @Test
     public void SingletonTest(){
         ConfigurationManager expected=ConfigurationManager.getInstance();
-        Assert.assertEquals(expected, manager);
+        ConfigurationManager actual=ConfigurationManager.getInstance();
+        Assert.assertEquals(expected,actual);
     }
 
-    @Before
-    public void setUp(){
-        manager=ConfigurationManager.getInstance();
-        curTestBrowser=System.getProperty(ConfigurationManager.TEST_BROWSER,"");
-        curTestEnviroment=System.getProperty(ConfigurationManager.TEST_ENVIRONMENT,"");
-    }
-    @After
-    public void clear(){
-        System.setProperty(ConfigurationManager.TEST_BROWSER,curTestBrowser );
-        System.setProperty(ConfigurationManager.TEST_ENVIRONMENT,curTestEnviroment);
+    @Test
+    public void getBrowserTest(){
+        JVMEnvironment.setenv(ConfigurationManager.TEST_BROWSER,"ie");
+        String actual=ConfigurationManager.getInstance().getTestBrowser();
+        Assert.assertEquals("ie", actual);
     }
     @Test
-    public void defaultBrowserTest(){
-        String expected="chrome";
-        System.setProperty(ConfigurationManager.TEST_BROWSER," ");
-        String actual=manager.getTestBrowser();
-        Assert.assertEquals(expected,actual);
+    public void getEnviromentTest(){
+        JVMEnvironment.setenv(ConfigurationManager.TEST_ENVIRONMENT,"cloud");
+        String actual=ConfigurationManager.getInstance().getTestEnvironment();
+        Assert.assertEquals("cloud", actual);
     }
     @Test
-    public void defaultEnviromentTest(){
-        String expected="local";
-        System.setProperty(ConfigurationManager.TEST_ENVIRONMENT," ");
-        String actual=manager.getTestEnvironment();
-        Assert.assertEquals(expected,actual);
+    public void getDefaultBrowserTest(){
+        JVMEnvironment.setenv(ConfigurationManager.TEST_BROWSER,null);
+        String actual=ConfigurationManager.getInstance().getTestBrowser();
+        Assert.assertEquals("chrome", actual);
     }
     @Test
-    public void curentEnviromentTest(){
-        String expected="BUILDSERVER";
-        String actual=manager.getTestEnvironment();
-        Assert.assertEquals(expected,actual);
+    public void getDefaultEnviromentTest() {
+        JVMEnvironment.setenv(ConfigurationManager.TEST_ENVIRONMENT, null);
+        String actual = ConfigurationManager.getInstance().getTestEnvironment();
+        Assert.assertEquals("local", actual);
     }
 
 
