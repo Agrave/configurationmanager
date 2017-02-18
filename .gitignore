@@ -1,0 +1,7 @@
+.idea/
+*.iml
+#.gitignore
+target/
+*~
+.DS_Store
+/src/main/resources/WebDriverBin/
