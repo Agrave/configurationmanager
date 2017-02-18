@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Rabot'aga on 22.12.2016.
- */
 public class FileTestLogger implements TestLogger {
     private String fileName = "target\\custom-logs\\"+"report_" + date() + ".txt";
     private int stepCounter;
@@ -29,11 +26,12 @@ public class FileTestLogger implements TestLogger {
     public void log(String msg) {
         log.add(getLogString(msg));
     }
-
+    private String start =timeStamp();
     private void saveToFile() {
 
         try (FileWriter reportFile = new FileWriter(fileName, true)) {
-            reportFile.write("logging stop at: "+timeStamp()+"\n");
+            reportFile.write("logging start at: "+start+"\n");
+            reportFile.write("logging stop  at: "+timeStamp()+"\n");
             if (!log.isEmpty())
                 for (int i = 0; i < log.size(); i++) {
                     reportFile.write(log.get(i) + "\n");
