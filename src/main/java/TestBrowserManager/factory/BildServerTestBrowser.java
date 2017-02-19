@@ -18,7 +18,7 @@ public class BildServerTestBrowser implements TestBrowserFactory {
         switch (browserType) {
             case CHROME:
                 capabilities = DesiredCapabilities.chrome();
-                System.setProperty("webdriver.chrome.driver", "\\usr\\lib\\selenium\\chromedriver");
+//                System.setProperty("webdriver.chrome.driver", "\\usr\\lib\\selenium\\chromedriver");
                 break;
             case FIREFOX:
                 capabilities = DesiredCapabilities.firefox();
