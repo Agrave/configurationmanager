@@ -42,7 +42,7 @@ public class BildServerTestBrowser implements TestBrowserFactory {
         try {
             seleniumServerURL = new URL("http://127.0.0.1:4444/wd/hub");
         } catch (Exception e) {
-//            seleniumServerURL = null;
+            throw new NullPointerException("fail URL");
         }
         return new RemoteWebDriver(seleniumServerURL, capabilities);
 
