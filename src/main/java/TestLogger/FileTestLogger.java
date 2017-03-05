@@ -11,6 +11,7 @@ public class FileTestLogger implements TestLogger {
     private String fileName = "target\\custom-logs\\"+"report_" + date() + ".txt";
     private int stepCounter;
     private List<String> log;
+    private String start =timeStamp();
 
     public FileTestLogger() {
         log=new ArrayList<>();
@@ -26,7 +27,6 @@ public class FileTestLogger implements TestLogger {
     public void log(String msg) {
         log.add(getLogString(msg));
     }
-    private String start =timeStamp();
     private void saveToFile() {
 
         try (FileWriter reportFile = new FileWriter(fileName, true)) {
