@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
  * Created by AMogilnikov on 05.03.2017.
  */
 public class AddBugForm {
-    WebElement addBugForm;
+    private WebElement addBugForm;
 
     public AddBugForm(WebElement addBugForm) {
         this.addBugForm = addBugForm;
@@ -18,6 +18,7 @@ public class AddBugForm {
         input.clear();
         input.sendKeys(name);
     }
+
     public void enterDescription(String description){
         WebElement input=addBugForm.findElement(By.cssSelector("textarea"));
 
@@ -25,6 +26,7 @@ public class AddBugForm {
         input.sendKeys(description);
 
     }
+
     public void submit(){
         addBugForm.findElement(By.cssSelector("button[data-qtip='OK']")).click();
     }

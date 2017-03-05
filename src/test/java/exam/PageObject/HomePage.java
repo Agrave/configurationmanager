@@ -10,14 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by AMogilnikov on 05.03.2017.
  */
 public class HomePage {
     private WebElement bugListTable;
-    private WebElement footer;
-    private WebElement bugRecord;
     private List<BugRecord> bugList;
     private WebDriver driver;
     private PagingToolbar toolbar;
@@ -26,8 +25,18 @@ public class HomePage {
     private By bugListTableLocator = By.cssSelector("table[class*='x-grid-table'");
 
     public HomePage(WebDriver driver) {
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(20,TimeUnit.SECONDS);
         this.driver = driver;
         wait = new WebDriverWait(driver, 20);
+
+        refreshBugListTable();
+
+        toolbar = new PagingToolbar(driver.findElement(By.cssSelector("div[id^='pagingtoolbar']")));
+
+    }
+
+    private void refreshBugListTable(){
         List<WebElement> bugListT;
         bugList = new ArrayList<>();
         bugListTable = driver.findElement(bugListTableLocator);
@@ -36,7 +45,6 @@ public class HomePage {
         for (WebElement e : bugListT) {
             bugList.add(new BugRecord(e));
         }
-        toolbar = new PagingToolbar(driver.findElement(By.cssSelector("div[id^='pagingtoolbar']")));
     }
 
     public WebElement getBugListTable() {
@@ -48,6 +56,7 @@ public class HomePage {
     }
 
     public BugRecord getBugByName(String name) {
+        refreshBugListTable();
         for (BugRecord br : bugList) {
             if (br.getName().equalsIgnoreCase(name)) return br;
         }
@@ -55,6 +64,7 @@ public class HomePage {
     }
 
     public boolean ifPresent(String name) {
+        refreshBugListTable();
         if (getBugByName(name) != null) return true;
         return false;
     }
@@ -70,18 +80,13 @@ public class HomePage {
         form.enterDescription(description);
         form.submit();
 
-//        toolbar.buttonRefreshClick();
-        try {
-            Thread.sleep(1_000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-//        wait.until(ExpectedConditions.presenceOfElementLocated(bugListTableLocator));
+        waitFor(2);
         return new HomePage(driver);
     }
 
     public HomePage deleteBugByName(String name) {
         By msgBoxLocator = By.cssSelector("div[id^='messagebox']");
+        refreshBugListTable();
         if (ifPresent(name)) {
             getBugByName(name).select();
             toolbar.buttonDeleteClick();
@@ -96,7 +101,6 @@ public class HomePage {
     public HomePage addBugViaAddButton(String name, String description) {
 
         By editNameLocator = By.cssSelector("div[class^='x-editor']");
-
         toolbar.buttonAddClick();
         wait.until(ExpectedConditions.presenceOfElementLocated(editNameLocator));
         driver.findElement(editNameLocator)
@@ -121,15 +125,13 @@ public class HomePage {
 
         bugInProgers = bugListTable.findElement(By.cssSelector("tr[class*='grid-dirty-record'"));
         bugInProgers.click();
-
         toolbar.buttonApplyClick();
 
-        stopFor(3);
-        System.out.println("zzzz");
+        waitFor(2);
         return new HomePage(driver);
     }
 
-    private void stopFor(int second) {
+    private void waitFor(int second) {
         try {
             Thread.sleep(second * 1000);
         } catch (InterruptedException e) {
