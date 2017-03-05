@@ -4,9 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Set;
 
-/**
- * Created by AMogilnikov on 19.02.2017.
- */
+
 public class SeleniumUtils {
     private static String curentWindow;
 
