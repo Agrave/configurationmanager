@@ -1,4 +1,4 @@
-package LitEraPageObject;
+package web.PageObject.LitEra;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

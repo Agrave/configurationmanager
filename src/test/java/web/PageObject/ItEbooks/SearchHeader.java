@@ -1,4 +1,4 @@
-package ItEbooksPageObjects;
+package web.PageObject.ItEbooks;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

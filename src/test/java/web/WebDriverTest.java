@@ -1,3 +1,5 @@
+package web;
+
 import ConfigurationManager.ConfigurationManager;
 import TestBrowserManager.DefaultTestBrowserManager;
 import TestBrowserManager.api.TestBrowserManager;
@@ -78,7 +80,6 @@ public class WebDriverTest {
         if (ConfigurationManager.getInstance().getTestEnvironment()=="local") Thread.sleep(2_000);
 
     }
-
     @Test
     public void LoginTest() throws Exception {
         logger.log("test login yasinskii.ru start");

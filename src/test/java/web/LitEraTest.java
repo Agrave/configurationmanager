@@ -1,7 +1,9 @@
+package web;
+
 import ConfigurationManager.ConfigurationManager;
-import LitEraPageObject.LitEraLoginPage;
-import LitEraPageObject.LoginPopup;
-import LitEraPageObject.MainPage;
+import web.PageObject.LitEra.LitEraLoginPage;
+import web.PageObject.LitEra.LoginPopup;
+import web.PageObject.LitEra.MainPage;
 import TestBrowserManager.DefaultTestBrowserManager;
 import TestBrowserManager.api.TestBrowserManager;
 import TestLogger.FileTestLogger;
@@ -9,7 +11,6 @@ import TestLogger.TestLogger;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -78,7 +79,6 @@ public class LitEraTest {
 
         }
     }
-
 
     @Test
     public void LoginViaEmailTest() throws Exception {

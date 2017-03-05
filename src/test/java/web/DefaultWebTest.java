@@ -1,3 +1,5 @@
+package web;
+
 import ConfigurationManager.ConfigurationManager;
 import TestBrowserManager.DefaultTestBrowserManager;
 import TestBrowserManager.api.TestBrowserManager;
