@@ -80,6 +80,7 @@ public class LitEraTest {
         }
     }
 
+    @Ignore
     @Test
     public void LoginViaEmailTest() throws Exception {
         logger.log("test login lit-era.com start");

@@ -1,5 +1,6 @@
 package web;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.when;
@@ -9,6 +10,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
  * Created by AMogilnikov on 02.03.2017.
  */
 public class RestAssuredTest {
+    @Ignore
     @Test
     public void itEbooks() {
         when()

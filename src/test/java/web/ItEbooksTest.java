@@ -1,5 +1,6 @@
 package web;
 
+import org.junit.Ignore;
 import web.PageObject.ItEbooks.BookDetailPage;
 import web.PageObject.ItEbooks.HomePage;
 import web.PageObject.ItEbooks.SearchHeader;
@@ -17,7 +18,7 @@ import java.io.File;
  * Created by AMogilnikov on 23.02.2017.
  */
 public class ItEbooksTest extends DefaultWebTest {
-
+    @Ignore
     @Test
     public void topLabelTest() {
         browser.get("http://it-ebooks.info/");
@@ -26,6 +27,7 @@ public class ItEbooksTest extends DefaultWebTest {
         Assert.assertEquals("Top Download eBooks", actual);
     }
 
+    @Ignore
     @Test
     public void lastUploadTest() {
         browser.get("http://it-ebooks.info/");
@@ -34,6 +36,7 @@ public class ItEbooksTest extends DefaultWebTest {
         Assert.assertEquals("Last Upload eBooks", actual);
     }
 
+    @Ignore
     @Test
     public void searchJavaBookTest() throws Exception {
         String testBookTitle="Functional Programming in Java";

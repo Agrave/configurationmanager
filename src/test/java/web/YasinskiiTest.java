@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 /**
  *
  */
-public class WebDriverTest {
+public class YasinskiiTest {
     private final static String email = "agrave18@gmail.com";
     private final static String password = "fhvfutljy";
     private final static String userName = "AGRAVE";
@@ -80,6 +80,7 @@ public class WebDriverTest {
         if (ConfigurationManager.getInstance().getTestEnvironment()=="local") Thread.sleep(2_000);
 
     }
+    @Ignore
     @Test
     public void LoginTest() throws Exception {
         logger.log("test login yasinskii.ru start");

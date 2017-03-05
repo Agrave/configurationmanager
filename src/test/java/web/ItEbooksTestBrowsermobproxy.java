@@ -44,6 +44,7 @@ public class ItEbooksTestBrowsermobproxy  {
         Assert.assertEquals("Top Download eBooks", actual);
     }
 
+    @Ignore
     @Test
     public void lastUploadTest() {
         browser.get("http://it-ebooks.info/");
