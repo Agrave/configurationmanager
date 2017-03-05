@@ -1,3 +1,5 @@
+package Infrastructure;
+
 import org.junit.Assert;
 import org.junit.Test;
 import utils.RandomValue;

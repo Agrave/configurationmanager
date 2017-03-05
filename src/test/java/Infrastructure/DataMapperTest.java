@@ -1,3 +1,5 @@
+package Infrastructure;
+
 import DataMapper.DefaultUserDataMaper;
 import DataMapper.User;
 import DataMapper.UserDataMaper;

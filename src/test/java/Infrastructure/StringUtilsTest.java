@@ -1,4 +1,7 @@
+package Infrastructure;
+
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import utils.Alphabet;
 import utils.RandomValue;
@@ -21,7 +24,6 @@ public class StringUtilsTest {
         for (String s:expected.split("")             ) {
             Assert.assertThat( "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",containsString(s));
         }
-
     }
     @Test
     public void testRandomStringNumericAlphabet(){
@@ -30,7 +32,6 @@ public class StringUtilsTest {
         for (String s:expected.split("")             ) {
             Assert.assertThat( "1234567890",containsString(s));
         }
-
     }
     @Test
     public void testRandomStringSymbolEqvivalent(){

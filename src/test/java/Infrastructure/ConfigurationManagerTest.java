@@ -1,3 +1,5 @@
+package Infrastructure;
+
 import ConfigurationManager.ConfigurationManager;
 import org.junit.*;
 import utils.JVMEnvironment;
