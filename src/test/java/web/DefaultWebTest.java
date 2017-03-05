@@ -20,30 +20,44 @@ public class DefaultWebTest {
     static TestLogger logger;
 
     @BeforeClass
-    public static void runOnceSetup() {
+    public static void open() {
         logger = new FileTestLogger();
         logger.log("browser: " + ConfigurationManager.getInstance().getTestBrowser());
         logger.log("enviroment: " + ConfigurationManager.getInstance().getTestEnvironment());
         manager = new DefaultTestBrowserManager();
-
+        openSetings();
     }
 
     @Before
-    public void setup() throws Exception {
+    public void setUp() throws Exception {
         browser = manager.getTestBrowser();
+        setUpSettings();
     }
 
     @After
-    public void clear() {
+    public void tearDown() {
         manager.destroyTestBrowser(browser);
+        tearDownSetings();
     }
 
     @AfterClass
-    public static void runOnceClear() {
+    public static void clear() {
         manager = null;
         logger.log("FINISH");
         logger = null;
+        clearSetings();
     }
 
+    protected static void openSetings(){
 
+    }
+    protected static void clearSetings(){
+
+    }
+    protected void setUpSettings(){
+
+    }
+    protected void tearDownSetings(){
+
+    }
 }
